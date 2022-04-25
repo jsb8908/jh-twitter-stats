@@ -1,6 +1,8 @@
+using jh_twitter_stats_api;
 using jh_twitter_stats_api.Controllers;
 using jh_twitter_stats_api.Services;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
@@ -18,7 +20,8 @@ namespace jh_twitter_stats_api_tests
         public void Initialize()
         {
             _statsService = new Mocks.MockStatsService();
-            _statsController = new StatsController(new NullLogger<StatsController>(), _statsService);
+            var options = Options.Create(new GeneralOptions() { MaxHashTagsReturnSize = 10, MaxStatsReturnSize = 10 });
+            _statsController = new StatsController(options,_statsService);
         }
 
         [TestMethod]
