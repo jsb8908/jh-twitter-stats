@@ -26,4 +26,3 @@ To test, you can either:
 1. Import Postman collection from: https://github.com/jsb8908/jh-twitter-stats/blob/main/jh-twitter-stats-api/Twitter-Stats.postman_collection.json
 2. Point browser to url: https://localhost:7109/swagger/index.html
 
-### Next Steps
