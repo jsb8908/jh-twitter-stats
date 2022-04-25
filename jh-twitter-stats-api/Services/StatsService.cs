@@ -19,14 +19,17 @@
         /// <returns></returns>
         public async Task<IEnumerable<StatsDTO>> GetStats(DateTime? asOf = null)
         {
+            // always return a non-null list to the caller
             List<StatsDTO> stats = new List<StatsDTO>();
             if (asOf != null && asOf.HasValue)
             {
+                //if caller has given us an asOf date, filter out older ones
                 var models = await _statsModelRepository.GetAsOf(asOf.Value);
                 stats = models.Select(m => StatsDTO.FromModel(m)).ToList();
             }
             else
             {
+                //no asOf Date, just return the latest Stat object that we have
                 var model = await _statsModelRepository.GetLatest();
                 if (model != null)
                 {

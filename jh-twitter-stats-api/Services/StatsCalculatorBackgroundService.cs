@@ -79,7 +79,6 @@ namespace jh_twitter_stats_api.Services
                     if (oldestQueueObject == null)
                     {
                         delayInMilliseconds = _generalOptions.StatsCalculatorSleepNoWorkInMilliseconds;
-                        _logger.LogInformation($"{nameof(StatsCalculatorBackgroundService)} has nothing to do...sleeping for {delayInMilliseconds} milliseconds");
                     }
                     await Task.Delay(delayInMilliseconds, stoppingToken);
                 }

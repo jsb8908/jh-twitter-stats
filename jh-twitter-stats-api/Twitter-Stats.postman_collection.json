@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "a42c949e-4c0d-42a9-a6de-092e0fd78fb3",
+		"name": "Twitter-Stats",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetCurrentStats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7109/stats/GetCurrentStats",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7109",
+					"path": [
+						"stats",
+						"GetCurrentStats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTotalTweets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7109/stats/GetTotalTweets",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7109",
+					"path": [
+						"stats",
+						"GetTotalTweets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTopHashTags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7109/stats/GetTopHashTags",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7109",
+					"path": [
+						"stats",
+						"GetTopHashTags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStatsAsOf",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7109/stats/GetStatsAsOf/4-21-2022",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7109",
+					"path": [
+						"stats",
+						"GetStatsAsOf",
+						"4-21-2022"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTopNHashTags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7109/stats/GetTopHashTags/20",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7109",
+					"path": [
+						"stats",
+						"GetTopHashTags",
+						"20"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

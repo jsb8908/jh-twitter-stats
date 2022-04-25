@@ -28,7 +28,7 @@ namespace jh_twitter_stats_api.Controllers
             return (await _statsService.GetStats(asOfDate)).OrderByDescending(s => s.AsOfTimestampUTC).Take(10); // limit the return
         }
 
-        [HttpGet(Name = "GetTotalTweets")]
+        [HttpGet("GetTotalTweets")]
         public async Task<long> GetTotalTweets()
         {
             var latestStats = await _statsService.GetStats();
@@ -42,14 +42,17 @@ namespace jh_twitter_stats_api.Controllers
 
 
         [HttpGet("GetTopHashTags/{top:int?}")]
-        public async Task<IEnumerable<HashTagDTO>> GetTotalTweets(int top = 10)
+        public async Task<IEnumerable<HashTagDTO>> GetTopHashTags(int top = 10)
         {
+            // we only need the latest Stat object
             var latestStats = await _statsService.GetStats();
             if (!latestStats.Any())
             {
+                // always return a non-null list to the caller
                 return new List<HashTagDTO>();
             }
-
+            
+            // return the list in descending order by the most popular hash tags
             return latestStats.First().TopHashTags
                                       .OrderByDescending(tht => tht.Count)
                                       .Take(top);

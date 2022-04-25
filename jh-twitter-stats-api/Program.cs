@@ -6,6 +6,7 @@ global using jh_twitter_stats_api.DTOs;
 global using System.Text.Json;
 
 using jh_twitter_stats_api;
+using jh_twitter_stats_api.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +27,12 @@ builder.Services.AddSingleton<IStatModelRepository, StatModelInMemoryRepository>
 builder.Services.AddTransient<IStatsService, StatsService>();
 builder.Services.AddTransient<IQueueService, QueueService>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    // a place to catch all Controller exceptions.....avoid the need for try/catch everywhere (unless specifically needed)
+    // even then, we can use our TwitterStatsWebHttpResponseException
+    options.Filters.Add(new HttpResponseExceptionFilter());
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
